@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Data
@@ -15,13 +13,15 @@ import java.util.List;
 @Entity //java ee: persistence
 @AllArgsConstructor //lombok: constructor with all params
 @NoArgsConstructor //lombok: constructor with no params
-public class Store {
+@NamedQuery(name = "Store.getStoreList", query = "SELECT s FROM Store s")
+
+public class Store implements Serializable {
 	@Id
 	@GeneratedValue
 	private long id;
 	private String name;
 	private String location;
 
-	@OneToMany(targetEntity = Inventory.class)
+	@OneToMany(targetEntity = Inventory.class, cascade = CascadeType.REMOVE)
 	private List<Inventory> storeInventory;
 }
