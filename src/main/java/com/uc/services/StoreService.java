@@ -1,6 +1,6 @@
-package com.vg.services;
+package com.uc.services;
 
-import com.vg.entities.Store;
+import com.uc.entities.Store;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;

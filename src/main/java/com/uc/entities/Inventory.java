@@ -1,6 +1,7 @@
-package com.vg.entities;
+package com.uc.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Data //lombok: @ToString, @EqualsAndHashCode, @Getter (all fields), @Setter (for non-final fields), @RequiredArgsConstructor
 @Entity //java ee: persistence
+@Builder
 @AllArgsConstructor //lombok: constructor with all params
 @NoArgsConstructor //lombok: constructor with no params
 @NamedQuery(name = "Inventory.getInventoryList", query = "SELECT i FROM Inventory i")

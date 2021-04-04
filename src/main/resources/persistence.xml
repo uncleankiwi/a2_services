@@ -5,8 +5,8 @@
 			 version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	<persistence-unit name="playerManagement" transaction-type="JTA">
 		<jta-data-source>java:/postgreDataSource</jta-data-source>
-		<class>com.vg.entities.Inventory</class>
-		<class>com.vg.entities.Inventory</class>
+		<class>com.uc.entities.Inventory</class>
+		<class>com.uc.entities.Inventory</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>
