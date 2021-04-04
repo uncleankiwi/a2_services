@@ -20,7 +20,7 @@ import java.util.List;
 public class Store implements Serializable {
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	private String name;
 	private String location;
 

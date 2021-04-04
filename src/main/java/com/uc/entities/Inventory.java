@@ -18,7 +18,7 @@ import java.util.Date;
 public class Inventory implements Comparable<Inventory>, Serializable {
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	private String name;
 	private String sport;
 	private int quantity;
