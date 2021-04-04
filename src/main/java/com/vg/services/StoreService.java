@@ -31,13 +31,11 @@ public class StoreService {
 
 	//update
 	public void updateStore(Store store) {
-		Store storeToUpdate = getStore(store);
-		entityManager.merge(storeToUpdate);
+		entityManager.merge(getStore(store));
 	}
 
 	//delete
 	public void deleteStore(Store store) {
-		Store storeToDelete = getStore(store);
-		entityManager.remove(storeToDelete);
+		entityManager.remove(getStore(store));
 	}
 }

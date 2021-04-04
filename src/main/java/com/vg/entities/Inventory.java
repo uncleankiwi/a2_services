@@ -12,6 +12,7 @@ import java.util.Date;
 @Entity //java ee: persistence
 @AllArgsConstructor //lombok: constructor with all params
 @NoArgsConstructor //lombok: constructor with no params
+@NamedQuery(name = "Inventory.getInventoryList", query = "SELECT i FROM Inventory i")
 public class Inventory implements Comparable<Inventory>, Serializable {
 	@Id
 	@GeneratedValue
