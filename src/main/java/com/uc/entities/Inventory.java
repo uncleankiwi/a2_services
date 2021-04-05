@@ -1,9 +1,6 @@
 package com.uc.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +12,7 @@ import java.util.Date;
 @AllArgsConstructor //lombok: constructor with all params
 @NoArgsConstructor //lombok: constructor with no params
 @NamedQuery(name = "Inventory.getInventoryList", query = "SELECT i FROM Inventory i")
+@ToString
 public class Inventory implements Comparable<Inventory>, Serializable {
 	@Id
 	@GeneratedValue
