@@ -32,6 +32,8 @@ public class StoreService {
 
 	//update
 	public void updateStore(Store store) {
+		System.out.println("updating in service");
+		System.out.println(store); //TODO
 		entityManager.merge(getStore(store));
 	}
 

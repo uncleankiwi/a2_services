@@ -31,6 +31,7 @@ public class InventoryService {
 
 	//update
 	public void updateInventory(Inventory inventory) {
+
 		entityManager.merge(getInventory(inventory));
 	}
 
