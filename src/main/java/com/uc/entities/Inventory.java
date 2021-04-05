@@ -25,6 +25,7 @@ public class Inventory implements Comparable<Inventory>, Serializable {
 	private float price;
 	private Date addedDate;
 	private Date updatedDate;
+	private Integer shopId;
 
 	@Override
 	public int compareTo(Inventory o) {

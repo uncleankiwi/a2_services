@@ -16,7 +16,6 @@ import java.util.List;
 @AllArgsConstructor //lombok: constructor with all params
 @NoArgsConstructor //lombok: constructor with no params
 @NamedQuery(name = "Store.getStoreList", query = "SELECT s FROM Store s")
-
 public class Store implements Serializable {
 	@Id
 	@GeneratedValue
@@ -24,6 +23,7 @@ public class Store implements Serializable {
 	private String name;
 	private String location;
 
-	@OneToMany(targetEntity = Inventory.class, cascade = CascadeType.REMOVE)
+	@OneToMany(targetEntity = Inventory.class, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	@JoinColumn(name = "shopId")
 	private List<Inventory> storeInventory;
 }
