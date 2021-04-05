@@ -23,7 +23,7 @@ public class Store implements Serializable {
 	private String name;
 	private String location;
 
-	@OneToMany(targetEntity = Inventory.class, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	@JoinColumn(name = "shopId")
 	private List<Inventory> storeInventory;
 }

@@ -20,6 +20,7 @@ public class InventoryService {
 
 	//create
 	public void addStore(Inventory inventory) {
+		if (inventory.getId() != null) inventory.setId(null);	//id needs to be null; allow JPA to automatically set it
 		entityManager.persist(inventory);
 	}
 

@@ -21,6 +21,7 @@ public class StoreService {
 
 	//create
 	public void addStore(Store store) {
+		if (store.getId() != null) store.setId(null);	//id needs to be null; allow JPA to automatically set it
 		entityManager.persist(store);
 	}
 
