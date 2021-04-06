@@ -26,19 +26,23 @@ public class StoreService {
 	}
 
 	//read
-	public Store getStore(Store store) {
-		return entityManager.find(Store.class, store.getId());
+	public Store getStore(Store store) throws Exception {
+		try {
+			return entityManager.find(Store.class, store.getId());
+		} catch (Exception e) {
+			throw new Exception("No item with that id exists.");
+		}
 	}
 
 	//update
-	public void updateStore(Store store) {
-		System.out.println("updating in service");
-		System.out.println(store); //TODO
-		entityManager.merge(getStore(store));
+	public void updateStore(Store store) throws Exception {
+		getStore(store);
+		entityManager.merge(store);
 	}
 
 	//delete
-	public void deleteStore(Store store) {
+	public void deleteStore(Store store) throws Exception {
+		getStore(store);
 		entityManager.remove(getStore(store));
 	}
 }
