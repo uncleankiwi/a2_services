@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -24,4 +26,16 @@ public class Store implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	@JoinColumn(name = "shopId")
 	private List<Inventory> storeInventory;
+
+	@PrePersist //method is automatically called before persist (i.e. before this object is put in the db row)
+	private void initInventory() {
+		this.storeInventory = new ArrayList<>();
+	}
+
+	public List<Inventory> getStoreInventory(){return storeInventory;}
+
+	public void setStoreInventory(List<Inventory> inventories){
+		this.storeInventory.clear();
+		this.storeInventory.addAll(inventories);
+	}
 }
