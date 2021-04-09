@@ -23,8 +23,7 @@ public class Store implements Serializable {
 	private String name;
 	private String location;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	@JoinColumn(name = "shopId")
+	@OneToMany(mappedBy = "store", fetch = FetchType.EAGER)
 	private List<Inventory> storeInventory;
 
 	@PrePersist //method is automatically called before persist (i.e. before this object is put in the db row)
@@ -32,10 +31,10 @@ public class Store implements Serializable {
 		this.storeInventory = new ArrayList<>();
 	}
 
-	public List<Inventory> getStoreInventory(){return storeInventory;}
-
-	public void setStoreInventory(List<Inventory> inventories){
-		this.storeInventory.clear();
-		this.storeInventory.addAll(inventories);
-	}
+//	public List<Inventory> getStoreInventory(){return storeInventory;}
+//
+//	public void setStoreInventory(List<Inventory> inventories){
+//		this.storeInventory.clear();
+//		this.storeInventory.addAll(inventories);
+//	}
 }

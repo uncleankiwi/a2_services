@@ -23,7 +23,10 @@ public class Inventory implements Comparable<Inventory>, Serializable {
 	private float price;
 	private Date addedDate;
 	private Date updatedDate;
-	private Integer shopId;
+
+	@ManyToOne
+	@JoinColumn(name = "shopid")
+	private Store store;
 
 	@Override
 	public int compareTo(Inventory o) {

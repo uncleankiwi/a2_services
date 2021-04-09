@@ -33,9 +33,11 @@ public class StoreService {
 	//update
 	public void updateStore(Store store) throws Exception {
 		if (getStore(store) == null) throw new Exception("No item with that id exists.");
-		Store updatedStore = entityManager.merge(store);
-		updatedStore.getStoreInventory().clear();
-		updatedStore.setStoreInventory(store.getStoreInventory());
+//		entityManager.merge(store);
+		System.out.println(entityManager.merge(store));
+//		Store updatedStore = entityManager.merge(store);
+//		updatedStore.getStoreInventory().clear();
+//		updatedStore.setStoreInventory(store.getStoreInventory());
 	}
 
 	//delete
