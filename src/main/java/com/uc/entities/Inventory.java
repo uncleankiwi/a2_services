@@ -16,7 +16,7 @@ import java.util.Date;
 @ToString //lombok: implement toString()
 public class Inventory implements Comparable<Inventory>, Serializable {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator="INVENTORY_GENERATOR")
 	private Long id;
 	private String name;
 	private String sport;

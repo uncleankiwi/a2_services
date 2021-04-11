@@ -17,7 +17,7 @@ import java.util.List;
 @ToString //lombok: implement toString()
 public class Store implements Serializable {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator="STORE_GENERATOR")
 	private Long id;
 	private String name;
 	private String location;
