@@ -30,14 +30,15 @@ public class StoreService {
 		return entityManager.find(Store.class, store.getId());
 	}
 
+	//read from id
+	public Store getStoreFromId(Long id) {
+		return entityManager.find(Store.class, id);
+	}
+
 	//update
 	public void updateStore(Store store) throws Exception {
 		if (getStore(store) == null) throw new Exception("No item with that id exists.");
-//		entityManager.merge(store);
-		System.out.println(entityManager.merge(store));
-//		Store updatedStore = entityManager.merge(store);
-//		updatedStore.getStoreInventory().clear();
-//		updatedStore.setStoreInventory(store.getStoreInventory());
+		entityManager.merge(store);
 	}
 
 	//delete

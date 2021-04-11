@@ -14,6 +14,7 @@ public class InventoryService {
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	//inventory list of all stores. unused.
 	public List<Inventory> getInventoryList() {
 		return entityManager.createNamedQuery("Inventory.getInventoryList", Inventory.class).getResultList();
 	}
@@ -27,6 +28,12 @@ public class InventoryService {
 	//read
 	public Inventory getInventory(Inventory inventory) {
 		return entityManager.find(Inventory.class, inventory.getId());
+	}
+
+	public List<Inventory> getStoreInventory(Long storeId) {
+		return entityManager.createNamedQuery("Inventory.getStoreInventory", Inventory.class)
+				.setParameter("storeId", storeId)
+				.getResultList();
 	}
 
 	//update

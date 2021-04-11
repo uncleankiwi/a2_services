@@ -12,6 +12,7 @@ import java.util.Date;
 @AllArgsConstructor //lombok: constructor with all params
 @NoArgsConstructor //lombok: constructor with no params
 @NamedQuery(name = "Inventory.getInventoryList", query = "SELECT i FROM Inventory i")
+@NamedQuery(name = "Inventory.getStoreInventory", query = "SELECT i FROM Inventory i WHERE i.store.id = :storeId")
 @ToString
 public class Inventory implements Comparable<Inventory>, Serializable {
 	@Id
