@@ -47,7 +47,8 @@ public class InventoryService {
 	}
 
 	//delete
-	public void deleteInventory(Inventory inventory) {
+	public void deleteInventory(Inventory inventory) throws Exception {
+		if (getInventory(inventory) == null) throw new Exception("No item with that id exists.");
 		entityManager.remove(getInventory(inventory));
 	}
 }

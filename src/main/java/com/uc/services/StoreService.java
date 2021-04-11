@@ -43,7 +43,8 @@ public class StoreService {
 	}
 
 	//delete
-	public void deleteStore(Store store) {
+	public void deleteStore(Store store) throws Exception {
+		if (getStore(store) == null) throw new Exception("No item with that id exists.");
 		entityManager.remove(getStore(store));
 	}
 }

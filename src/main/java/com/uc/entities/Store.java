@@ -22,7 +22,7 @@ public class Store implements Serializable {
 	private String name;
 	private String location;
 
-	@OneToMany(mappedBy = "store", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "store", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@ToString.Exclude //for brevity
 	private List<Inventory> storeInventory;
 
