@@ -38,9 +38,11 @@ public class InventoryService {
 	}
 
 	//update
-	public void updateInventory(Inventory inventory) {
-
-		entityManager.merge(getInventory(inventory));
+	public void updateInventory(Inventory inventory) throws Exception {
+		Inventory oldInv = getInventory(inventory);
+		if (oldInv == null) throw new Exception("No item with that id exists.");
+		inventory.setAddedDate(oldInv.getAddedDate());
+		entityManager.merge(inventory);
 	}
 
 	//delete

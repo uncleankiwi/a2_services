@@ -27,11 +27,12 @@ public class Inventory implements Comparable<Inventory>, Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "shopid")
+	@ToString.Exclude //otherwise it'll cause an infinite loop
 	private Store store;
 
 	@Override
 	public int compareTo(Inventory o) {
-		return this.updatedDate.compareTo((o.updatedDate));
+		return -1 * this.updatedDate.compareTo((o.updatedDate));
 	}
 
 	@PrePersist //method is automatically called before persist (i.e. before this object is put in the db row)

@@ -23,6 +23,7 @@ public class Store implements Serializable {
 	private String location;
 
 	@OneToMany(mappedBy = "store", fetch = FetchType.EAGER)
+	@ToString.Exclude //for brevity
 	private List<Inventory> storeInventory;
 
 	@PrePersist //method is automatically called before persist (i.e. before this object is put in the db row)
