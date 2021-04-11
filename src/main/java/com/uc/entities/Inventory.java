@@ -32,7 +32,19 @@ public class Inventory implements Comparable<Inventory>, Serializable {
 
 	@Override
 	public int compareTo(Inventory o) {
-		return -1 * this.updatedDate.compareTo((o.updatedDate));
+		//compare by updatedDate first then addedDate. reverse order for both so that newest is at top.
+		//treat nulls as 1970.
+		Long thisUpdatedDate = this.updatedDate != null ? this.updatedDate.getTime() : 0;
+		Long oUpdatedDate = o.updatedDate != null ? o.updatedDate.getTime() : 0;
+		int updatedCompare = -1 * thisUpdatedDate.compareTo(oUpdatedDate);
+		if (updatedCompare != 0) {
+			return updatedCompare;
+		}
+		else {
+			Long thisAddedDate = this.addedDate != null ? this.addedDate.getTime() : 0;
+			Long oAddedDate = o.addedDate != null ? o.addedDate.getTime() : 0;
+			return -1 * thisAddedDate.compareTo(oAddedDate);
+		}
 	}
 
 	@PrePersist //method is automatically called before persist (i.e. before this object is put in the db row)

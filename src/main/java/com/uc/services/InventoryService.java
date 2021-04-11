@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Stateless //EJB: session bean won't store client data. pool shared by all users. good for outputting data.
 @Remote //EJB: exposed through JNDI for other applications
@@ -34,7 +35,7 @@ public class InventoryService {
 	public List<Inventory> getStoreInventory(Long storeId) {
 		return entityManager.createNamedQuery("Inventory.getStoreInventory", Inventory.class)
 				.setParameter("storeId", storeId)
-				.getResultList();
+				.getResultList().stream().sorted().collect(Collectors.toList());
 	}
 
 	//update
