@@ -8,21 +8,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Stateless
-@Remote
+@Stateless //EJB: session bean won't store client data. pool shared by all users. good for outputting data.
+@Remote //EJB: exposed through JNDI for other applications
 public class StoreService {
-	@PersistenceContext
+	@PersistenceContext //JEE: accesses persistence context, which accesses db
 	private EntityManager entityManager;
-
-	public List<Store> getStoreList() {
-		return entityManager.createNamedQuery("Store.getStoreList", Store.class)
-				.getResultList();
-	}
 
 	//create
 	public void addStore(Store store) {
 		if (store.getId() != null) store.setId(null);	//id needs to be null; allow JPA to automatically set it
 		entityManager.persist(store);
+	}
+
+	//read all
+	public List<Store> getStoreList() {
+		return entityManager.createNamedQuery("Store.getStoreList", Store.class)
+				.getResultList();
 	}
 
 	//read

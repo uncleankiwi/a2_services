@@ -5,17 +5,16 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Data
 //lombok: @ToString, @EqualsAndHashCode, @Getter (all fields), @Setter (for non-final fields), @RequiredArgsConstructor
 @Entity //java ee: persistence
-@Builder
+@Builder //lombok: builder pattern
 @AllArgsConstructor //lombok: constructor with all params
 @NoArgsConstructor //lombok: constructor with no params
 @NamedQuery(name = "Store.getStoreList", query = "SELECT s FROM Store s")
-@ToString
+@ToString //lombok: implement toString()
 public class Store implements Serializable {
 	@Id
 	@GeneratedValue
@@ -30,11 +29,4 @@ public class Store implements Serializable {
 	private void initInventory() {
 		this.storeInventory = new ArrayList<>();
 	}
-
-//	public List<Inventory> getStoreInventory(){return storeInventory;}
-//
-//	public void setStoreInventory(List<Inventory> inventories){
-//		this.storeInventory.clear();
-//		this.storeInventory.addAll(inventories);
-//	}
 }

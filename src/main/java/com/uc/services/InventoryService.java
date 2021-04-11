@@ -8,10 +8,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Stateless
-@Remote
+@Stateless //EJB: session bean won't store client data. pool shared by all users. good for outputting data.
+@Remote //EJB: exposed through JNDI for other applications
 public class InventoryService {
-	@PersistenceContext
+	@PersistenceContext //JEE: accesses persistence context, which accesses db
 	private EntityManager entityManager;
 
 	//inventory list of all stores. unused.
@@ -30,6 +30,7 @@ public class InventoryService {
 		return entityManager.find(Inventory.class, inventory.getId());
 	}
 
+	//read all
 	public List<Inventory> getStoreInventory(Long storeId) {
 		return entityManager.createNamedQuery("Inventory.getStoreInventory", Inventory.class)
 				.setParameter("storeId", storeId)

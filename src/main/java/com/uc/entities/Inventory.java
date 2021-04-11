@@ -8,12 +8,12 @@ import java.util.Date;
 
 @Data //lombok: @ToString, @EqualsAndHashCode, @Getter (all fields), @Setter (for non-final fields), @RequiredArgsConstructor
 @Entity //java ee: persistence
-@Builder
+@Builder //lombok: builder pattern
 @AllArgsConstructor //lombok: constructor with all params
 @NoArgsConstructor //lombok: constructor with no params
 @NamedQuery(name = "Inventory.getInventoryList", query = "SELECT i FROM Inventory i")
 @NamedQuery(name = "Inventory.getStoreInventory", query = "SELECT i FROM Inventory i WHERE i.store.id = :storeId")
-@ToString
+@ToString //lombok: implement toString()
 public class Inventory implements Comparable<Inventory>, Serializable {
 	@Id
 	@GeneratedValue
